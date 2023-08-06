@@ -1,0 +1,124 @@
+﻿@model Hotelmania.Models.User
+
+<div class="container">
+    <h2>User's Info:</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.PhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Password)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "ProfileEdit", new { id = Model.UserID })
+            </td>
+        </tr>
+
+    </table>
+
+    <hr />
+    <h2>Reservation History:</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("ReservationID")
+            </th>
+            <th>
+                @Html.DisplayName("StartDate")
+            </th>
+            <th>
+                @Html.DisplayName("EndDate")
+            </th>
+            <th>
+                @Html.DisplayName("Price")
+            </th>
+            <th>
+                @Html.DisplayName("RoomNumber")
+            </th>
+        </tr>
+        @foreach (var item in Model.Reservations)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room.RoomNumber)
+                </td>
+            </tr>
+        }
+    </table>
+    <h2>Bills :</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("BillID")
+            </th>
+            <th>
+                @Html.DisplayName("BillAmount")
+            </th>
+            <th>
+                @Html.DisplayName("ReservationID")
+            </th>
+        </tr>
+        @foreach (var item in Model.Bills)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reservation.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationID)
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>

@@ -1,0 +1,42 @@
+﻿<div style="background-color:white;" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div id="right-navBar" class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <ul class="nav navbar-nav">
+                    <!--If user is logged in-->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink(User.Identity.Name.ToString(),"Profiles","Home", new { @id = "my-class" })</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Home", new { @id = "my-class" })</li>
+                    }
+                    else
+                    {
+                        <!--If user is not logged in-->
+                        <li>@Html.Partial("_LoggedOutPartial")</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="navbar-collapse collapse">
+                
+                <ul class="nav navbar-nav">
+                    <li style="font-size:x-large">@Html.ActionLink("Hotelmania", "Index", "Home", new { @id = "my-class" })</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { @id = "my-class" })</li>
+                    <li>@Html.ActionLink("Gallery", "Gallery", "Home", new { @id = "my-class" })</li>
+                    <li>@Html.ActionLink("Reservation", "Reservation", "Home", new { @id = "my-class" })</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { @id = "my-class" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { @id = "my-class" })</li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>

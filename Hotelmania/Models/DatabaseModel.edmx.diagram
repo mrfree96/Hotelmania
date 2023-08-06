@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c63742b8741e4fa2a8c0feaa61698cdf" Name="Diagram1">
+        <EntityTypeShape EntityType="HotelReservationDBModel.Admin" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelReservationDBModel.Bill" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelReservationDBModel.Comment" Width="1.5" PointX="2.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelReservationDBModel.CreditCard" Width="1.5" PointX="4.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelReservationDBModel.Payment" Width="1.5" PointX="8.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelReservationDBModel.Reservation" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelReservationDBModel.Restaurant" Width="1.5" PointX="6.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelReservationDBModel.Room" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelReservationDBModel.TypeofActivity" Width="1.5" PointX="8.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelReservationDBModel.User" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="HotelReservationDBModel.FK_Bills_Payments" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelReservationDBModel.FK_Bills_Reservations" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelReservationDBModel.FK_Bills_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelReservationDBModel.FK_Payments_Reservations" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelReservationDBModel.FK_Reservations_Rooms" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelReservationDBModel.FK_Reservations_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

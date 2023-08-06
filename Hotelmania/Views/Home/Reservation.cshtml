@@ -1,0 +1,45 @@
+﻿@using Hotelmania.Models
+@model Reservation
+@{
+    ViewBag.Title = "Reservation";
+}
+
+<h2>Reservation</h2>
+@{ 
+    List<SelectListItem> list = ViewBag.RoomList;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="booking-form">
+            @using (Html.BeginForm("CheckAvailability","Home",FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <h2 style="color:red;">@ViewBag.ErrorMessage</h2>
+                <br />
+                <div class="row no-margin">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <span class="form-label">Check In</span>
+                            <input class="form-control" id="StartDate" name="StartDate" type="date" required="">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <span class="form-label">Check Out</span>
+                            <input class="form-control" id="EndDate" name="EndDate" type="date" required="">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="width:100%;">
+                    <span class="form-label">Room Type</span>
+                    @Html.DropDownListFor(m=>m.Room.RoomType, list, "Select a room type", new { @class = "form-control", required = "required" })
+                </div>
+                <div class="form-btn">
+                    <button type="submit" class="submit-btn">Check Availability</button>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

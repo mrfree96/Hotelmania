@@ -1,0 +1,83 @@
+﻿@using Hotelmania.Models
+@model Reservation
+@{
+    ViewBag.Title = "Payment";
+}
+
+<h2>Payment</h2>
+
+@{
+    List<SelectListItem> monthList = ViewBag.Months;
+    List<SelectListItem> yearList = ViewBag.Years;
+
+}
+
+<div class="container">
+    @using (Html.BeginForm("PayNow","Home",FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <h2 style="color:red;">@ViewBag.ErrorMessage</h2>
+    <br />
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-3">
+            <span>Date : @DateTime.Now.ToShortDateString()</span>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-3">
+            <span>Price : @Model.Price</span>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-3">
+            <span>Payment Type : Credit Card</span>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+        
+        
+    </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    @Html.Label("CardHolderName")
+                    <input type="text" name="CardHolderName" id="CardHolderName" required />
+
+                </div>
+                <br />
+                <div class="row">
+                    @Html.Label("CardNo")
+                    <input style="margin-left:64px;" type="text" name="CardNo" id="CardNo" required />
+
+                </div>
+                <br />
+                <div class="row">
+                    @Html.Label("ExpirationDate")
+                    <span style="margin-left:16px;"></span>@Html.DropDownList("ExpirationMonth", monthList, "month", new { @class = "", required = "required" })
+                    @Html.DropDownList("ExpirationYear", yearList, "year", new { @class = "", required = "required" })
+
+                </div>
+                <br />
+                <div class="row">
+                    @Html.Label("CVVNo")
+                    <input style="margin-left:66px;" type="text" name="CVV" id="CVV" required />
+                </div>
+                <div class="col-md-12">
+                    <input style="margin-top:20px; margin-left:80px;" type="submit" class="btn btn-success" value="Pay Now" />
+                </div>
+                <!--Reservation id sending to paynow action...-->
+                @Html.Hidden("ReservationID", Model.ReservationID.ToString())
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+    }
+</div>

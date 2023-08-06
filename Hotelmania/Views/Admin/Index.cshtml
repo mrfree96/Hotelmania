@@ -1,0 +1,76 @@
+﻿@using Hotelmania.Models
+@model List<Reservation>
+@{
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6">
+        <span>Amount of Reservations</span>
+        <br />
+        <span>@ViewBag.TotalReservation</span>
+    </div>
+    <div class="col-md-6">
+        <span>Total Earnings</span>
+        <br />
+        <span>@ViewBag.TotalEarnings</span>
+        <br />
+        <br />
+    </div>
+    <hr />
+    <h2>Reservations</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("ReservationID")
+            </th>
+            <th>
+                @Html.DisplayName("UserName")
+            </th>
+            <th>
+                @Html.DisplayName("StartDate")
+            </th>
+            <th>
+                @Html.DisplayName("EndDate")
+            </th>
+            <th>
+                @Html.DisplayName("Price")
+            </th>
+            <th>
+                @Html.DisplayName("RoomNumber")
+            </th>
+            <th>
+                @Html.DisplayName("IsApproved")
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.RoomNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsApproved)
+            </td>
+        </tr>
+        }
+
+    </table>
+</div>
+
+

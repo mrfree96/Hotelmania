@@ -1,0 +1,64 @@
+﻿@using Hotelmania.ViewModels
+@model IndexViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Services</h2>
+<div>
+    <ul style="list-style:none;">
+        @foreach (var item in Model.TypeofActivities)
+        {
+            <li style="font-size:large;font-family:Tahoma;"><span class="glyphicon glyphicon-star"></span> @item.ActivityName</li>
+        }
+    </ul>
+</div>
+<hr />
+<h2>Restaurants</h2>
+<div>
+    <ul style="list-style:none;">
+        @foreach (var item in Model.Restaurants)
+        {
+            <li style="font-size:large;font-family:Tahoma;"><span class="glyphicon glyphicon-cutlery"></span> @item.RestaurantName : Price per meal is @item.PricePerMeal$</li>
+        }
+    </ul>
+</div>
+<br />
+<hr />
+<div class="container">
+    <h2 style="text-align:center;">Comments</h2>
+    <div style=" padding:20px;">
+        @foreach (var item in Model.Comments)
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <p>@item.CommentatorName <br /> @item.CommentatorEmail</p>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                        @item.CommentContent
+                    </p>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+    <br />
+    <h2 style="text-align:center;">Add a comment!</h2>
+    <div style="margin-left:35%; margin-right:35%; margin-top:25px;">
+        <form action="/Home/AddComment" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <label>Name</label>
+            <input class="form-control" type="text" name="CommentatorName" id="CommentatorName" required />
+            <br />
+            <label>Email</label>
+            <input class="form-control" type="email" name="CommentatorEmail" id="CommentatorEmail" required />
+            <br />
+            <label>Comment</label>
+            @Html.TextArea("CommentContent", new { @class = "form-control", required = "required" })
+            <br />
+            <input class="btn btn-success" type="submit" value="Add Comment" />
+        </form>
+    </div>
+    
+</div>

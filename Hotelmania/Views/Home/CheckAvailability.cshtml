@@ -1,0 +1,43 @@
+﻿@using Hotelmania.Models
+@model Reservation
+@{
+    ViewBag.Title = "CheckAvailability";
+}
+
+<h2>CheckAvailability</h2>
+
+<!--if reservation process is not failed-->
+@if (ViewBag.ReservationState == "successful")
+{
+    <p style="font-size:large;">A room was found!</p>
+    @*<span class="glyphicon glyphicon-home"></span>*@
+    if (Model.Room.RoomType == "Single")
+    {
+        <img width="250" height="250" src="~/images/single.jpg" alt="Alternate Text" />
+    }
+    else if (Model.Room.RoomType == "Double")
+    {
+        <img width="250" height="250" src="~/images/double.jpg" alt="Alternate Text" />
+    }
+    else if (Model.Room.RoomType == "Family")
+    {
+        <img width="350" height="250" src="~/images/family.jpg" alt="Alternate Text" />
+    }
+        
+    <span style="font-size:large;margin-left:25px;">Room Type : @Model.Room.RoomType   -  </span>
+    <span style="font-size:large">Price : @ViewBag.TotalPrice</span>
+        
+    
+
+    <!--Payment for reservation-->
+    <span style="margin-left:25px;"></span>@Html.ActionLink("Payment", "Payment", new { id = Model.ReservationID })
+
+}
+@if (ViewBag.ReservationState == "fail")
+{
+    <!--if reservation process is failed-->
+    <p>Sorry, there is no available room!</p>
+}
+
+
+

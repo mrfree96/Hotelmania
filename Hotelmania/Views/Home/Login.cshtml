@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/login.css" rel="stylesheet" type="text/css"/>
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+            @using (Html.BeginForm())
+            {
+                if(ViewBag.UserNotFound == "true")
+                {
+                    <span class="alert-danger">Username or password is incorrect!</span>
+                }
+                <input type="text" id="UserName" name="UserName" placeholder="name" required/>
+                <input type="password" id="Password" name="Password" placeholder="password" required/>
+                <input style=" background-color:lightgreen;" type="submit" value="Login"/>
+                <p class="message">Not registered? <a href="/Home/Register">Register</a></p>
+             }
+</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@using Hotelmania.Models
+@model List<Room>
+
+@{
+    ViewBag.Title = "Rooms";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Rooms</h2>
+
+<div class="row" style="color:white;">
+    @foreach (var item in Model)
+    {
+        if (item.IsReserved)
+        {
+            <div class="col-md-3" style="background-color:red; margin-right:20px; margin-bottom:20px;">
+                <span>@item.RoomNumber</span>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-3" style="background-color:forestgreen; margin-right:20px; margin-bottom:20px;">
+                <span>@item.RoomNumber</span>
+            </div>
+        }
+
+    }
+</div>
